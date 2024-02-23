@@ -1,6 +1,5 @@
-[TOC]
 # Recruit system
-
+[TOC]
 ## Background of the project
 This is a simple and efficient recruitment system. Its core functionality allows job seekers to browse various positions online and submit their CVs to positions of interest via email. Recruiters can easily post and manage job information in the backend, as well as view job applications for positions.
 
