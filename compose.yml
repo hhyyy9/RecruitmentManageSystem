@@ -1,0 +1,28 @@
+version: '3'
+services:
+    nginx-php:
+      build: ./
+      container_name: nginx-php_compose
+      ports:
+        - "80:80"
+      volumes:
+        - "$PWD/php-app:/var/www/php-script"
+        - "$PWD/vue-app:/usr/share/nginx/html"
+      depends_on:
+        - "mysql"
+      networks:
+        - for_yoobee_test
+ 
+    mysql:
+      build: ./mysql
+      container_name: mysql_compose
+      ports:
+        - "3306:3306"
+      networks:
+        - for_yoobee_test
+      environment:
+        MYSQL_ROOT_PASSWORD: 666666
+        MYSQL_DATABASE: yoobee_test
+        MYSQL_PASSWORD: 666666
+networks:
+    for_asknicely_test:
