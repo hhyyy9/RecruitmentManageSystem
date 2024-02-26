@@ -12,7 +12,7 @@ CREATE TABLE `employer_info` (
   `official_web` varchar(255) NOT NULL DEFAULT '' COMMENT 'official website',
   `email` varchar(255) NOT NULL DEFAULT '' COMMENT 'email',
   `employee_num` int(10) unsigned zerofill NOT NULL COMMENT 'employee num',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3; 
 
 DROP TABLE IF EXISTS position_info;
