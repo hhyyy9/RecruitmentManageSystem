@@ -25,4 +25,4 @@ services:
         MYSQL_DATABASE: yoobee_test
         MYSQL_PASSWORD: 666666
 networks:
-    for_asknicely_test:
+    for_yoobee_test:
