@@ -25,15 +25,15 @@ abstract class Services_BaseServiceModel {
     public function __construct() {
         $request = Yaf_Dispatcher::getInstance()->getRequest();
         $userInfo = array();
-        Dao_UserInfoModel::setConfig();
-        Dao_UserInfoModel::setTable('user_info');
-        $userInfo = Dao_UserInfoModel::getUserInfo();
+        // Dao_UserInfoModel::setConfig();
+        // Dao_UserInfoModel::setTable('user_info');
+        // $userInfo = Dao_UserInfoModel::getUserInfo();
 
         $this->_request = array(
             'post' => $request->getPost(),
             'get' => $request->getQuery(),
             'files' => $request->getFiles(),
-            'user_info' => $userInfo,
+            //'user_info' => $userInfo,
         );
 
     }
