@@ -5,7 +5,7 @@
  * @athor Yuqi Wang
  * @date 2024/02/24
  */
-class PublishAction extends Yaf_Action_Abstract {
+class PublishPositionAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
