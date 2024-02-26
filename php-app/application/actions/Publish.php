@@ -9,7 +9,7 @@ class PublishAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
-        $servicePublish = new Services_PublishPositionModel();
+        $servicePublish = new Services_PublishPositionServiceModel();
     
         $servicePublish->execute();
         $ret = $servicePublish->getRet();
