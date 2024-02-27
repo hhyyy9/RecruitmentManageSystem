@@ -33,6 +33,7 @@ class Services_GetPositionListServiceModel extends Services_BaseServiceModel {
                     "start_time" => "02/02/2024",
                     "end_time" => "02/03/2024",
                     "updated_time" => "02/03/2024",
+                    "salary_range" => "$90000-$100000",
                 ),
                 array(
                     "position_id" => 2,
@@ -42,6 +43,7 @@ class Services_GetPositionListServiceModel extends Services_BaseServiceModel {
                     "start_time" => "02/02/2024",
                     "end_time" => "02/03/2024",
                     "updated_time" => "02/03/2024",
+                    "salary_range" => "$90000-$120000",
                 ),
             ),
 
