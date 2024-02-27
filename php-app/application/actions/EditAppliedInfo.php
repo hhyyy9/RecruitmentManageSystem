@@ -3,13 +3,13 @@
 /**
  * @desc action for update
  * @athor Yuqi Wang
- * @date 2024/02/24
+ * @date 2024/02/27
  */
-class UpdatePositionAction extends Yaf_Action_Abstract {
+class EditAppliedInfoAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
-        $servicePublish = new Services_UpdatePositionServiceModel();
+        $servicePublish = new Services_EditAppliedInfoServiceModel();
     
         $servicePublish->execute();
         $ret = $servicePublish->getRet();
