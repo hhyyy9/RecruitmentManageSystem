@@ -9,10 +9,10 @@ class UpdatePositionAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
-        // $servicePublish = new Services_PublishPositionServiceModel();
+        $servicePublish = new Services_UpdatePositionServiceModel();
     
-        // $servicePublish->execute();
-        // $ret = $servicePublish->getRet();
+        $servicePublish->execute();
+        $ret = $servicePublish->getRet();
         $ret = array();
         // render rest
         if(is_array($ret)){

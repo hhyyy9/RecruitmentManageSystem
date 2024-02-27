@@ -72,7 +72,7 @@ The interface provides services through the HTTP protocol <br/>
     - Desc <br/>
         For employer publish new positions.
     - Path:
-        /api/publish_position
+        /api/publishposition
     - Content-type:
          application/x-www-form-urlencoded
     - Method:
@@ -103,7 +103,7 @@ The interface provides services through the HTTP protocol <br/>
     - Desc <br/>
         For updating position info by ID.
     - Path:
-        /api/update_position
+        /api/updateposition
     - Content-type:
          application/x-www-form-urlencoded
     - Method:
@@ -207,7 +207,7 @@ The interface provides services through the HTTP protocol <br/>
 - Desc <br/>
      For getting applied info list
     - Path:
-        /api/get_applied_info_list
+        /api/getappliedinfolist
     - Method:
         GET
     - Host:
@@ -251,7 +251,7 @@ The interface provides services through the HTTP protocol <br/>
     - Desc <br/>
         For Editting applied info
     - Path:
-        /api/edit_applied_info
+        /api/editappliedinfo
     - Method:
         GET
     - Host:

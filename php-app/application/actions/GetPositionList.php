@@ -9,13 +9,11 @@ class GetPositionListAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
-        // $servicePublish = new Services_PublishPositionServiceModel();
+        $servicePublish = new Services_GetPositionListServiceModel();
     
-        // $servicePublish->execute();
-        // $ret = $servicePublish->getRet();
-        $ret = array(
-            
-        );
+        $servicePublish->execute();
+        $ret = $servicePublish->getRet();
+       
         // render rest
         if(is_array($ret)){
             Render_Format::JsonOutput(ErrorCode::CODE_SUCESS, $ret, '');

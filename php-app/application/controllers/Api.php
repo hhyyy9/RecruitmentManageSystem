@@ -13,11 +13,11 @@ class ApiController extends Yaf_Controller_Abstract {
     }
 
     public $actions = array(
-        "publish_position" => "actions/PublishPosition.php",
-        "update_position" => "actions/UpdatePosition.php",
+        "publishposition" => "actions/PublishPosition.php",
+        "updateposition" => "actions/UpdatePosition.php",
         "getpositionlist" => "actions/GetPositionList.php",
         "apply" => "actions/Apply.php",
-        "get_applied_info_list" => "actions/GetApppliedInfoList.php",
-        "edit_applied_info" => "actions/EditAppliedInfo.php",
+        "getappliedinfolist" => "actions/GetApppliedInfoList.php",
+        "editappliedinfo" => "actions/EditAppliedInfo.php",
     );
 }

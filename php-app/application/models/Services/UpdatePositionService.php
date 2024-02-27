@@ -1,6 +1,6 @@
 <?php
 
-class Services_PublishPositionServiceModel extends Services_BaseServiceModel {
+class Services_UpdatePositionServiceModel extends Services_BaseServiceModel {
 
    
     /**
@@ -8,7 +8,7 @@ class Services_PublishPositionServiceModel extends Services_BaseServiceModel {
      */
     protected function checkParam(){
         // check param by ruler
-        $checkRet = Utils::checkParamsByRulers($this->_request['post'], 'post', 'publishposition');
+        $checkRet = Utils::checkParamsByRulers($this->_request['post'], 'post', 'updateposition');
         if(!$checkRet['pass']){
             throw new Exception($checkRet['error_info'], ErrorCode::CODE_ERROR_PARAMS);
         }
@@ -22,6 +22,8 @@ class Services_PublishPositionServiceModel extends Services_BaseServiceModel {
      */
     protected function doExecute(){
         $this->_ret = array();
+
+
     }
 
 } 
