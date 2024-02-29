@@ -162,6 +162,7 @@ The interface provides services through the HTTP protocol <br/>
                     "start_time": "02/02/2024",
                     "end_time": "02/03/2024",
                     "updated_time": "15/02/2024",
+                    "salary_range": "$90,000-$100,000",
                 },
                 {
                     "position_id": 2,
@@ -171,6 +172,7 @@ The interface provides services through the HTTP protocol <br/>
                     "start_time": "02/02/2024",
                     "end_time": "02/03/2024",
                     "updated_time": "15/02/2024",
+                    "salary_range": "$90,000-$100,000",
                 }
             ],
         "has_more": true // still have next page or not.
