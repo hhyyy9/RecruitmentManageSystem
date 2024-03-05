@@ -41,4 +41,28 @@ class Utils {
 
         return $ret;
     }
+
+    /**
+     * @desc convert pdo ret to key=value map
+     * @param $pdoArr array
+     * @return array
+     */
+    public static function convertPdoRet($pdoArr){
+        $ret = array();
+
+        if(count($pdoArr) > 0 && is_array($pdoArr)){
+            foreach($pdoArr as $value){
+                $recordTmpArr = array();
+                foreach($value as $key=>$columnValue){
+                    if(is_string($key)){
+                        $recordTmpArr[strtolower($key)] = $columnValue;
+                    }
+                }
+                $ret[] = $recordTmpArr;
+            }
+        }
+
+        return $ret;
+    }
+
 }

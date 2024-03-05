@@ -29,6 +29,7 @@ CREATE TABLE `employer_info` (
   `company_name` varchar(255) NOT NULL COMMENT 'company_name',
   `official_web` varchar(255) NOT NULL DEFAULT '' COMMENT 'official website',
   `email` varchar(255) NOT NULL DEFAULT '' COMMENT 'email',
+  `employer_icon` varchar(255) NOT NULL DEFAULT '' COMMENT 'employer icon',
   `employee_num` int(10) unsigned zerofill NOT NULL COMMENT 'employee num',
   PRIMARY KEY (`id`),
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
@@ -43,6 +44,7 @@ CREATE TABLE `position_info` (
   `status` int(10) unsigned zerofill NOT NULL COMMENT 'position status, 1: open, 2: close',
   `position_name` varchar(255) NOT NULL,
   `salary_range` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
   `postion_desc` text(2000),
   `start_time` timestamp NOT NULL COMMENT 'position start at',
   `end_time` timestamp NOT NULL COMMENT 'position end at',
@@ -84,6 +86,8 @@ The interface provides services through the HTTP protocol <br/>
     | name | type | required | Desc |Sample
     | :----:| :----: | :----: | :----: | :----:
     | position_name | string | true | position name for Showing|Senior Front-End engineer|
+    | location | string | false | work location| Auckland NZ|
+    | salary_range | string | true | salry range| $90000-$100000 |
     | planed_hired_num | int | true | the maximum num of hired people|20|
     | desc | string | true | Job desc for this positoin| <div>This is a xxx</div>|
     | employer_id | int | true | employer ID| 2|
@@ -115,6 +119,8 @@ The interface provides services through the HTTP protocol <br/>
     | name | type | required | Desc |Sample
     | :----:| :----: | :----: | :----: | :----:
     | position_id | int | true | position id|
+    | position_name | string | true | position name for Showing|Senior Front-End engineer|
+    | location | string | false | work location| Auckland NZ|
     | planed_hired_num | int | true | the maximum num of hired people| 20 |
     | desc | string | true | Job desc for this positoin| <div>This is a xxx</div>|
     | employer_id | int | true | employer ID|12|
@@ -163,6 +169,9 @@ The interface provides services through the HTTP protocol <br/>
                     "end_time": "02/03/2024",
                     "updated_time": "15/02/2024",
                     "salary_range": "$90,000-$100,000",
+                    "position_name": "Senior RD",
+                    "employer_icon": "http://xxx.png",
+                    "location": "Auckland, NZ",
                 },
                 {
                     "position_id": 2,
@@ -173,6 +182,8 @@ The interface provides services through the HTTP protocol <br/>
                     "end_time": "02/03/2024",
                     "updated_time": "15/02/2024",
                     "salary_range": "$90,000-$100,000",
+                    "position_name": "Senior RD",
+                    "location": "Auckland, NZ",
                 }
             ],
         "has_more": true // still have next page or not.

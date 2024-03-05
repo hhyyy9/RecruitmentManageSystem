@@ -22,34 +22,17 @@ class Services_GetPositionListServiceModel extends Services_BaseServiceModel {
      */
     protected function doExecute(){
 
-        $this->_ret = array(
 
-            "list" => array(
-                array(
-                    "position_id" => 1,
-                    "employer_id" => 2,
-                    "desc" => "Job DescJob DescJob DescJob DescJob Desc\nJob DescJob DescJob Desc\n",
-                    "employer_name" => "Google",
-                    "start_time" => "02/02/2024",
-                    "end_time" => "02/03/2024",
-                    "updated_time" => "02/03/2024",
-                    "salary_range" => "$90000-$100000",
-                ),
-                array(
-                    "position_id" => 2,
-                    "employer_id" => 2,
-                    "desc" => "Job DescJob DescJob DescJob DescJob Desc\nJob DescJob DescJob Desc\n",
-                    "employer_name" => "Google",
-                    "start_time" => "02/02/2024",
-                    "end_time" => "02/03/2024",
-                    "updated_time" => "02/03/2024",
-                    "salary_range" => "$90000-$120000",
-                ),
-            ),
 
-            "has_more"=> false,
+        $this->_ret = array();
 
-        );
+        // get data
+        Dao_PositionInfoModel::setConfig();
+        Dao_PositionInfoModel::setTable('position_info');
+        $pdoPositionList = Dao_PositionInfoModel::getPositionList();
+    
+        // convert and set value to $_ret
+        $this->_ret = Utils::convertPdoRet($pdoPositionList);
 
     }
 

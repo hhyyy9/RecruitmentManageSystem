@@ -11,6 +11,7 @@ CREATE TABLE `employer_info` (
   `company_name` varchar(255) NOT NULL COMMENT 'company_name',
   `official_web` varchar(255) NOT NULL DEFAULT '' COMMENT 'official website',
   `email` varchar(255) NOT NULL DEFAULT '' COMMENT 'email',
+  `employer_icon` varchar(255) NOT NULL DEFAULT '' COMMENT 'employer icon',
   `employee_num` int(10) unsigned zerofill NOT NULL COMMENT 'employee num',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3; 
@@ -24,6 +25,8 @@ CREATE TABLE `position_info` (
   `applied_num` int(10) unsigned zerofill NOT NULL COMMENT 'applied num',
   `status` int(10) unsigned zerofill NOT NULL COMMENT 'position status, 1: open, 2: close',
   `position_name` varchar(255) NOT NULL,
+  `salary_range` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
   `postion_desc` text(2000),
   `start_time` timestamp NOT NULL COMMENT 'position start at',
   `end_time` timestamp NOT NULL COMMENT 'position end at',
