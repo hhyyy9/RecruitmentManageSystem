@@ -22,6 +22,26 @@ class Services_ApplyServiceModel extends Services_BaseServiceModel {
      */
     protected function doExecute(){
         $this->_ret = array();
+
+
+        Dao_ApplyInfoModel::setConfig();
+        Dao_ApplyInfoModel::setTable('applied_info');
+
+
+        $newApply = array(
+            'candidate_email' => $this->_request['post']['candidate_email'],
+            'position_id' => $this->_request['post']['position_id'],
+            'status' => 0,
+            'created_time' => date("Y-m-d H:i:s"),
+            'updated_time' => date("Y-m-d H:i:s"),
+        );
+        $insertData[] = $newApply;
+        
+        // insert data
+        $effectedRow = Dao_ApplyInfoModel::addApplyInfos($insertData);
+        
+        // set value to $_ret
+        $this->_ret['add_cnt'] = $effectedRow;
     }
 
 } 

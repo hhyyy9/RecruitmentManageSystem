@@ -43,9 +43,11 @@ CREATE TABLE `applied_info` (
   `position_id` int(10) unsigned zerofill NOT NULL COMMENT 'position id',
   `applied_times` int(10) unsigned zerofill NOT NULL COMMENT 'applied times for same candidate',
   `status` int(10) unsigned zerofill NOT NULL COMMENT 'applying status, 1: pass; 2: reject',
+  `has_mailed` int(10) unsigned zerofill NOT NULL COMMENT 'has mailed or not, 0: not; 1: has',
   `created_time` timestamp NOT NULL,
   `updated_time` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
+  KEY `uniq_cadidate_position_id` (`candidate_email`,`position_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
 
 -- just for test
