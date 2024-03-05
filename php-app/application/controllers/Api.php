@@ -17,7 +17,7 @@ class ApiController extends Yaf_Controller_Abstract {
         "updateposition" => "actions/UpdatePosition.php",
         "getpositionlist" => "actions/GetPositionList.php",
         "apply" => "actions/Apply.php",
-        "getappliedinfolist" => "actions/GetApppliedInfoList.php",
+        "getappliedinfolist" => "actions/GetAppliedInfoList.php",
         "editappliedinfo" => "actions/EditAppliedInfo.php",
         "login" => "actions/Login.php",
 

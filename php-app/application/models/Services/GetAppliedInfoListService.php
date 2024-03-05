@@ -1,6 +1,6 @@
 <?php
 
-class Services_GetApppliedInfoListServiceModel extends Services_BaseServiceModel {
+class Services_GetAppliedInfoListServiceModel extends Services_BaseServiceModel {
 
    
     /**

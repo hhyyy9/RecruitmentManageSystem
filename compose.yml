@@ -7,7 +7,7 @@ services:
         - "80:80"
       volumes:
         - "$PWD/php-app:/var/www/php-script"
-        - "$PWD/vue-app:/usr/share/nginx/html"
+        #- "$PWD/vue-app:/usr/share/nginx/html"
       depends_on:
         - "mysql"
       networks:

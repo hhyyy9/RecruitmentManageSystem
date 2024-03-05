@@ -5,11 +5,11 @@
  * @athor Yuqi Wang
  * @date 2024/02/24
  */
-class GetApppliedInfoListAction extends Yaf_Action_Abstract {
+class GetAppliedInfoListAction extends Yaf_Action_Abstract {
     public function execute(){
 
         
-        $servicePublish = new Services_GetApppliedInfoListServiceModel();
+        $servicePublish = new Services_GetAppliedInfoListServiceModel();
     
         $servicePublish->execute();
         $ret = $servicePublish->getRet();
