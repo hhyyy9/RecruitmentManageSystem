@@ -165,7 +165,7 @@ The interface provides services through the HTTP protocol <br/>
                 {
                     "position_id": 1,
                     "employer_id": 2,
-                    "postion_desc": "<div>Job Desc </div>",
+                    "desc": "<div>Job Desc </div>",
                     "employer_name": "Google",
                     "start_time": "02/02/2024",
                     "end_time": "02/03/2024",

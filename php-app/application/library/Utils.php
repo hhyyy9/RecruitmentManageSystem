@@ -57,6 +57,9 @@ class Utils {
                     if(is_string($key)){
                         $recordTmpArr[strtolower($key)] = $columnValue;
                     }
+                    if($key == "postion_desc"){
+                        $recordTmpArr['desc'] = $columnValue;
+                    }
                 }
                 $ret[] = $recordTmpArr;
             }
