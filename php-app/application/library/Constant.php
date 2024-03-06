@@ -13,4 +13,9 @@ final class Constant {
     // tmp pass hash value
     const TMP_PASS = "e10adc3949ba59abbe56e057f20f883e";
 
+
+    const DEFAULT_STR = "";
+
+    const DEFAULT_INT = 0;
+
 }
