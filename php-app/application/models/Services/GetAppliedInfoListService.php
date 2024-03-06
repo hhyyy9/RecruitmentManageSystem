@@ -22,37 +22,13 @@ class Services_GetAppliedInfoListServiceModel extends Services_BaseServiceModel 
      */
     protected function doExecute(){
 
-         // get data
-         Dao_ApplyInfoModel::setConfig();
-         Dao_ApplyInfoModel::setTable('applied_info');
-         $pdoAppliedList = Dao_ApplyInfoModel::getAppliedInfoList($this->_request['get']['position_id']);
-     
-         // convert and set value to $_ret
-         $this->_ret = Utils::convertPdoRet($pdoAppliedList);
+        // get data
+        Dao_ApplyInfoModel::setConfig();
+        Dao_ApplyInfoModel::setTable('applied_info');
+        $pdoAppliedList = Dao_ApplyInfoModel::getAppliedInfoList($this->_request['get']['position_id']);
 
-        $this->_ret = array(
-            "list" => array(
-                array(
-                    "applied_id" => 23,
-                    "candidate_email" => "xxx@gmail.com",
-                    "applied_times" => 3,
-                    "status" => 1,
-                    "created_time" => "02/02/2024",
-                    "updated_time" => "02/03/2024",
-                    "has_mailed" => true,
-                ),
-                array(
-                    "applied_id" => 23,
-                    "candidate_email" => "xxx@gmail.com",
-                    "applied_times" => 3,
-                    "status" => 1,
-                    "created_time" => "02/02/2024",
-                    "updated_time" => "02/03/2024",
-                    "has_mailed" => false,
-                ),
-            ),
-            "has_more"=> false,
-        );
+        // convert and set value to $_ret
+        $this->_ret = Utils::convertPdoRet($pdoAppliedList);
 
     }
 
