@@ -34,6 +34,8 @@ class Services_ApplyServiceModel extends Services_BaseServiceModel {
             'status' => 0,
             'created_time' => date("Y-m-d H:i:s"),
             'updated_time' => date("Y-m-d H:i:s"),
+            'has_mailed' => 0,
+            'applied_times' => 1,
         );
         $insertData[] = $newApply;
         

@@ -23,7 +23,7 @@ class Services_LoginServiceModel extends Services_BaseServiceModel {
     protected function doExecute(){
         $this->_ret = array();
 
-        if($this->_request['post']['user_name'] != Constant::TMP_USER_NAME || md5($this->_request['post']['pass']) != Constant::TMP_PASS){
+        if($this->_request['post']['username'] != Constant::TMP_USER_NAME || md5($this->_request['post']['pass']) != Constant::TMP_PASS){
             throw new Exception("login fail", ErrorCode::CODE_ERROR_PARAMS);
         }
         

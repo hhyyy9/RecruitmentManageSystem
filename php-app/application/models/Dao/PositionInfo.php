@@ -131,7 +131,7 @@ class Dao_PositionInfoModel extends Dao_BaseModel {
             // $sql = sprintf("select id as position_id, published_employer_id as employer_id, planed_hired_num, 
             // applied_num, status, position_name, postion_desc as desc, start_time, end_time,
             // created_time, updated_time  from %s", self::$_table);
-            $sql = "select p.id as position_id, p.published_employer_id as employer_id, p.planed_hired_num as planed_hired_num, 
+            $sql = "select p.salary_range as salary_range, p.id as position_id, p.published_employer_id as employer_id, p.planed_hired_num as planed_hired_num, 
             p.position_name as position_name, p.postion_desc as postion_desc, p.start_time as start_time, p.end_time as end_time,
             p.created_time as created_time, p.updated_time as updated_time, e.company_name as employer_name 
             from position_info as p left join employer_info as e on p.published_employer_id=e.id
