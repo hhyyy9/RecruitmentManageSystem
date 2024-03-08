@@ -36,8 +36,8 @@ class Services_PublishPositionServiceModel extends Services_BaseServiceModel {
             'status' => 1,
             'position_name' => $this->_request['post']['position_name'],
             'postion_desc'=> $this->_request['post']['desc'],
-            'start_time' => $this->_request['post']['start_time'],
-            'end_time' => $this->_request['post']['end_stime'],
+            'start_time' => !empty($this->_request['post']['start_time']) ? date("Y-m-d H:i:s", strtotime($this->_request['post']['start_time'])) : '',
+            'end_time' => !empty($this->_request['post']['end_stime']) ? date("Y-m-d H:i:s", strtotime($this->_request['post']['end_stime'])) : '',
             'created_time' => date("Y-m-d H:i:s"),
             'updated_time' => date("Y-m-d H:i:s"),
         );

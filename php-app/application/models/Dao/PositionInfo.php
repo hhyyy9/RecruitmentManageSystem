@@ -91,10 +91,12 @@ class Dao_PositionInfoModel extends Dao_BaseModel {
                             // if not insert use empty value based on it's datatype to fulfill
                             switch (self::$_columnFiledsType[$column]) {
                                 case PDO::PARAM_STR:
-                                    $stateMent->bindParam($i, Constant::DEFAULT_STR, PDO::PARAM_STR);
+                                    $tmp = Constant::DEFAULT_STR;
+                                    $stateMent->bindParam($i, $tmp, PDO::PARAM_STR);
                                     break;
                                 case PDO::PARAM_INT:
-                                    $stateMent->bindParam($i, Constant::DEFAULT_INT, PDO::PARAM_INT);
+                                    $tmp = Constant::DEFAULT_INT;
+                                    $stateMent->bindParam($i, $tmp, PDO::PARAM_INT);
                                     break;
                             }
                         }
