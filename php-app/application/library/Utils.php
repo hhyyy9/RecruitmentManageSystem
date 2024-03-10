@@ -60,6 +60,14 @@ class Utils {
                     if($key == "postion_desc"){
                         $recordTmpArr['desc'] = $columnValue;
                     }
+
+                    if($key == "employer_icon"){
+                        $recordTmpArr['employer_icon'] = 'https://sourceonetech.com/wp-content/uploads/2015/03/mobile-icon-png-mobile-icon-free-flat-multimedia-iconset-designbolts-18.png';
+                    }
+
+                    if(in_array($key, array('employer_id', 'planed_hired_num'))){
+                        $recordTmpArr[strtolower($key)] = intval($columnValue);
+                    }
                 }
                 $ret[] = $recordTmpArr;
             }
