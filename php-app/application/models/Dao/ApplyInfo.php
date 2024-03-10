@@ -150,15 +150,15 @@ class Dao_ApplyInfoModel extends Dao_BaseModel {
                 if (in_array($column, self::$_columnFileds)) {
                     switch (self::$_columnFiledsType[$column]) {
                         case PDO::PARAM_STR:
-                            $updatePlaceHolder .= " `$column`= '$value' and";
+                            $updatePlaceHolder .= " `$column`= '$value', ";
                             break;
                         case PDO::PARAM_INT:
-                            $updatePlaceHolder .= " `$column`= $value and";
+                            $updatePlaceHolder .= " `$column`= $value, ";
                             break;
                     }
                 }
             }
-            $updatePlaceHolder = substr($updatePlaceHolder, 0, -4);
+            $updatePlaceHolder = substr($updatePlaceHolder, 0, -2);
             if(strlen($updatePlaceHolder) > 0) {
                 $updateSql = sprintf("update %s set %s where id=%d", self::$_table, $updatePlaceHolder, intval($id));
             }else{

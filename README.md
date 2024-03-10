@@ -268,7 +268,7 @@ The interface provides services through the HTTP protocol <br/>
     - Path:
         /api/editappliedinfo
     - Method:
-        GET
+        POST
     - Host:
     https://xxx.com
     - Params
