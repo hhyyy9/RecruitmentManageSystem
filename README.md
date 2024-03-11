@@ -15,6 +15,7 @@ This is a simple and efficient recruitment system. Its core functionality allows
 # Ideas and implementation
 
 ## Architecture
+![alt text](image.png)
 
 ## Storage design
 Based on the above architectural principles and requirements, the storage only relies on Myqsl as RDB.
