@@ -14,12 +14,21 @@ This is a simple and efficient recruitment system. Its core functionality allows
 
 # Ideas and implementation
 
+Technology selection and coding principles:
+- Meet the question requirements;
+- Simple and usable;
+- While reflecting sufficient coding capabilities, this simple version can lead to more and more complete details and thinking;
+- Save costs in deployment;
+
 ## Architecture
 ![alt text](image.png)
 
 ## Storage design
-Based on the above architectural principles and requirements, the storage only relies on Myqsl as RDB.
-
+Based on the above principles and assumptions：
+- The front-end is used for independent rendering, and the back-end provides reading and writing capabilities to the front-end through HTTP API.
+- Storage only relies on mysql as RDB to provide storage and query capabilities, and has no other storage services.
+- The code deployment method is localized single mode. Although the front-end and back-end are isolated from the development and application dimensions through the API protocol, the deployment in the same container and the same nginx process is essentially a single service.
+- A separate mysql image is used for storage, but the mysqld process and the nginx process are on the same host instance, so the entire service is still a single entity. <br/>
 ### Table Structure
 - employer_info Table  <br/>
 ``` sql
