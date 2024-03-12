@@ -15,20 +15,56 @@ This is a simple and efficient recruitment system. Its core functionality allows
 # Ideas and implementation
 
 Technology selection and coding principles:
-- Meet the question requirements;
+- Meet the assignment's and assumption requirements;
 - Simple and usable;
 - While reflecting sufficient coding capabilities, this simple version can lead to more and more complete details and thinking;
 - Save costs in deployment;
 
 ## Architecture
-![alt text](image.png)
-
-## Storage design
 Based on the above principles and assumptions：
 - The front-end is used for independent rendering, and the back-end provides reading and writing capabilities to the front-end through HTTP API.
 - Storage only relies on mysql as RDB to provide storage and query capabilities, and has no other storage services.
 - The code deployment method is localized single mode. Although the front-end and back-end are isolated from the development and application dimensions through the API protocol, the deployment in the same container and the same nginx process is essentially a single service.
 - A separate mysql image is used for storage, but the mysqld process and the nginx process are on the same host instance, so the entire service is still a single entity. <br/>
+![alt text](image.png)
+
+# Selection
+- Web Server <br/>
+    Nginx <br/>
+    Reason:<br/>
+    - Lighter and takes up less resources
+    - Communicates with php-fpm through cgi protocol, friendly to php support
+    - The configuration method is simple. Mount the corresponding html and php scripts to the corresponding directories to achieve front-end and back-end separation.
+- Backend framework <br/>
+    YAF <br/>
+    Reason:<br/>
+    - Simple and concise enough, except for the core route dispatching, autoloaded mechanism, there are no other redundant business class libraries. The entire project structure needs to be built from scratch, which is very suitable for the development scenario of this interview project.
+    - Written in C language and provided as a PHP extension. Compared with other frameworks written in PHP, the running cost of the framework itself is lower.
+    - Included in the official pecl library (https://pecl.php.net/package/yaf), installation and compilation are convenient and simple.
+    - Very flexible, with enough space to define and develop various class libraries suitable for your own business.
+    - I have used the non-open source version of this framework while working internally at Baidu and am relatively familiar with it.
+- Front-end framework <br/>
+    Vue <br/>
+    Reason: <br/>
+    - Virtual DOM feature performance is relatively better.
+    - Easy to Learn and Use.
+- Deployment <br/>
+    Docker-compose <br/>
+    Reason: <br/>
+    - Containerized deployment supports running on different platforms.
+    - Easy to start and use, friendly for developers and interviewers to run and review functions.
+    - The community is friendly, and it is very convenient to have dockerhub to host customized images (this nginx-php image based on ubuntu: https://hub.docker.com/r/richardwong666/nginx-php for this project).
+- Storage <br/>
+   Mysql <br/>
+   Reason: <br/>
+   - Business scenarios require RDB to record employee information
+   - The official Docker image is friendly and supports the initialization of the build table during the build phase.
+   - Performance is fully sufficient to support current business scenarios.
+   - It has strong scalability. Even in actual scenarios, distributed deployment and capacity expansion can be quickly achieved after business expansion. And there is no upgrade burden on the code.
+
+## Storage design
+Based on the above architectural principles and requirements, the storage only relies on Myqsl as RDB.
+
 ### Table Structure
 - employer_info Table  <br/>
 ``` sql
@@ -77,6 +113,61 @@ CREATE TABLE `applied_info` (
   PRIMARY KEY (`id`)
   KEY `uniq_cadidate_position_id` (`candidate_email`,`position_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+```
+## Code dir structure
+``` shell
+.
+├── Dockerfile
+├── README.md
+├── compose.yml
+├── conf # some conf files for dockerfile building images.
+│   ├── php.ini
+│   ├── vhost.conf
+│   └── www.conf
+├── favicon.png
+├── image.png
+├── mysql # mysql images from mysql:latest, and add init.sql to create DB and tables.
+│   ├── Dockerfile
+│   ├── init.sh
+│   └── init.sql
+├── php-app # php dir, and this dir also be mounted to nginx cgi script dir at docker build stage.
+│   ├── application
+│   │   ├── Bootstrap.php
+│   │   ├── actions # action layer, each file will be loaded accroding to controllers' define.
+│   │   │   ├── Apply.php
+│   │   │   ├── EditAppliedInfo.php
+│   │   │   ├── GetAppliedInfoList.php
+│   │   │   ├── GetPositionList.php
+│   │   │   ├── Login.php
+│   │   │   ├── PublishPosition.php
+│   │   │   └── UpdatePosition.php
+│   │   ├── controllers # controller layer, mianly for routes dispatching to specific action.
+│   │   │   └── Api.php
+│   │   ├── library # libs dir, all the lib files define here and will be autoloaded.
+│   │   │   ├── Constant.php
+│   │   │   ├── ErrorCode.php
+│   │   │   ├── Render
+│   │   │   │   └── Format.php
+│   │   │   └── Utils.php
+│   │   └── models  # model layer, mainly for business logic implements
+│   │       ├── Dao # data access obj layer, RDB, noRDB and so on all can do here. In principle, it is only allowed to be called by the Service layer.  
+│   │       │   ├── ApplyInfo.php
+│   │       │   ├── Base.php
+│   │       │   ├── EmployerInfo.php
+│   │       │   └── PositionInfo.php
+│   │       └── Services # services layer, core business logic write here(call data from dao then pack and set to ret, In principle, only can be called form action layer).
+│   │           ├── ApplyService.php
+│   │           ├── BaseService.php # abstract base service class, define the core process only expose execute and getRet to caller.
+│   │           ├── EditAppliedInfoService.php
+│   │           ├── GetAppliedInfoListService.php
+│   │           ├── GetPositionListService.php
+│   │           ├── LoginService.php
+│   │           ├── PublishPositionService.php
+│   │           └── UpdatePositionService.php
+│   ├── conf
+│   │   └── application.ini # conf defines, such as DB connection info params check rulers
+│   └── index.php # main entrance
+└── start.sh
 ```
 
 ## API Protocol
